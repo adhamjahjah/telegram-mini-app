@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f0f0f" />
+  <title>Bot Dashboard</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="avatar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="header-info">
+          <h1 class="header-title">Bot Dashboard</h1>
+          <span class="header-sub" id="user-name">Loading...</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="status-badge" id="status-badge">
+          <span class="status-dot" id="status-dot"></span>
+          <span class="status-label" id="status-label">Online</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable content -->
+    <main class="main">
+
+      <!-- Stats row -->
+      <section class="stats-row">
+        <div class="stat-card">
+          <span class="stat-value" id="stat-tasks">0</span>
+          <span class="stat-label">Tasks Done</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-uptime">0h</span>
+          <span class="stat-label">Uptime</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-success">0%</span>
+          <span class="stat-label">Success</span>
+        </div>
+      </section>
+
+      <!-- Current Task -->
+      <section class="card" id="task-card">
+        <div class="card-header">
+          <span class="card-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M13 2.05V4.07C16.94 4.56 20 7.92 20 12C20 14.58 18.81 16.9 16.95 18.44L18.36 19.85C20.57 17.96 22 15.14 22 12C22 6.82 18.12 2.55 13 2.05ZM11 2.05C5.88 2.56 2 6.83 2 12C2 15.14 3.43 17.96 5.64 19.85L7.05 18.44C5.19 16.9 4 14.58 4 12C4 7.92 7.06 4.56 11 4.07V2.05ZM12 6C8.69 6 6 8.69 6 12C6 15.31 8.69 18 12 18C15.31 18 18 15.31 18 12C18 8.69 15.31 6 12 6Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="card-title">Current Task</span>
+          <span class="task-eta" id="task-eta">ETA: --</span>
+        </div>
+        <div class="task-name" id="task-name">Initializing...</div>
+        <div class="progress-wrap">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="progress-pct" id="progress-pct">0%</span>
+        </div>
+        <div class="task-meta">
+          <span id="task-step">Step 0 of 0</span>
+          <span id="task-started">Started just now</span>
+        </div>
+      </section>
+
+      <!-- Queue -->
+      <section class="card">
+        <div class="card-header">
+          <span class="card-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6H2V20C2 21.1 2.9 22 4 22H18V20H4V6ZM20 2H8C6.9 2 6 2.9 6 4V16C6 17.1 6.9 18 8 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H8V4H20V16Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="card-title">Task Queue</span>
+          <span class="badge" id="queue-count">0</span>
+        </div>
+        <ul class="queue-list" id="queue-list"></ul>
+      </section>
+
+      <!-- Recent Activity -->
+      <section class="card">
+        <div class="card-header">
+          <span class="card-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12S7.58 4 12 4s8 3.58 8 8-3.58 8-8 8ZM12.5 7H11V13L16.25 16.15L17 14.92L12.5 12.25V7Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="card-title">Recent Activity</span>
+          <button class="btn-clear" id="btn-clear">Clear</button>
+        </div>
+        <ul class="activity-list" id="activity-list"></ul>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
